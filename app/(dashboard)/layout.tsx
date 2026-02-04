@@ -1,10 +1,11 @@
 'use client';
 
-import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Sidebar from '@/components/Sidebar';
 import { AnimatePresence, motion } from 'framer-motion';
+import { TrendingUp } from 'lucide-react';
+import { useSession } from 'next-auth/react';
 
 export default function DashboardLayout({
     children,
@@ -78,10 +79,10 @@ function MobileNav() {
                         <line x1="3" y1="18" x2="21" y2="18" />
                     </svg>
                 </button>
-                <h1 className="text-xl font-bold tracking-tight text-blue-400 flex items-center gap-2">
-                    <img src="/title.png" alt="HAT Logo" className="w-8 h-8 object-contain" />
-                    HAT
-                </h1>
+                <div className="flex items-center gap-2">
+                    <TrendingUp className="w-6 h-6 text-blue-400" />
+                    <h1 className="text-xl font-bold tracking-tight text-white">TRADER</h1>
+                </div>
             </div>
 
             {/* Mobile Drawer */}
@@ -108,7 +109,7 @@ function MobileNav() {
                             {/* Close Button Inside (Optional but good UX) */}
                             <button
                                 onClick={() => setIsOpen(false)}
-                                className="absolute top-4 right-4 p-2 text-slate-400 hover:text-white md:hidden"
+                                className="absolute top-4 right-4 p-2 text-white hover:bg-slate-800 rounded-full"
                             >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"

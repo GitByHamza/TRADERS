@@ -14,43 +14,32 @@ export function ThemeToggle() {
     }, []);
 
     if (!mounted) {
-        return (
-            <button className="p-2 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-400">
-                <Sun size={20} />
-            </button>
-        );
+        return <div className="w-14 h-8 bg-gray-200 rounded-full" />;
     }
+
+    const isDark = theme === 'dark';
 
     return (
         <button
-            onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-            className="relative p-2 rounded-xl bg-gray-200 dark:bg-slate-800 text-gray-900 dark:text-yellow-400 hover:bg-gray-300 dark:hover:bg-slate-700 transition-colors overflow-hidden"
+            onClick={() => setTheme(isDark ? 'light' : 'dark')}
+            className={`
+                relative w-16 h-8 rounded-full p-1 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500
+                ${isDark ? 'bg-slate-700' : 'bg-gray-200'}
+            `}
             aria-label="Toggle Theme"
         >
             <motion.div
-                initial={false}
-                animate={{
-                    scale: theme === 'dark' ? 0 : 1,
-                    rotate: theme === 'dark' ? 90 : 0
-                }}
-                transition={{ duration: 0.2 }}
-                className="absolute inset-0 flex items-center justify-center"
+                className="w-6 h-6 bg-white rounded-full shadow-sm flex items-center justify-center"
+                layout
+                transition={{ type: "spring", stiffness: 700, damping: 30 }}
+                animate={{ x: isDark ? 32 : 0 }}
             >
-                <Sun size={20} className="text-orange-500" />
+                {isDark ? (
+                    <Moon size={14} className="text-slate-800" />
+                ) : (
+                    <Sun size={14} className="text-orange-500" />
+                )}
             </motion.div>
-
-            <motion.div
-                initial={false}
-                animate={{
-                    scale: theme === 'dark' ? 1 : 0,
-                    rotate: theme === 'dark' ? 0 : -90
-                }}
-                transition={{ duration: 0.2 }}
-                className="flex items-center justify-center w-full h-full"
-            >
-                <Moon size={20} className="text-blue-400" />
-            </motion.div>
-            <div className="w-5 h-5" /> {/* Spacer to maintain size */}
         </button>
     );
 }

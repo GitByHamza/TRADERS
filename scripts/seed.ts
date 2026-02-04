@@ -1,6 +1,6 @@
 
-import mongoose from 'mongoose';
 import * as dotenv from 'dotenv';
+import mongoose from 'mongoose';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
