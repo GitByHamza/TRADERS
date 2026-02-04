@@ -5,17 +5,24 @@
   --font-mono: var(--font-geist-mono);
 }
 
+/* Enable class-based dark mode for next-themes */
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   /* Pearl White Theme */
-  --background: #F8F8F8; /* Dim White / Pearl */
-  --foreground: #1A1A1A; /* Dark Grey for text */
+  --background: #F8F8F8;
+  /* Dim White / Pearl */
+  --foreground: #1A1A1A;
+  /* Dark Grey for text */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     /* Midnight Black Theme */
-    --background: #0F172A; /* Slate 900 / Midnight */
-    --foreground: #F1F5F9; /* Slate 100 for text */
+    --background: #0F172A;
+    /* Slate 900 / Midnight */
+    --foreground: #F1F5F9;
+    /* Slate 100 for text */
   }
 }
 
@@ -26,8 +33,10 @@
 }
 
 .dark {
-  --background: #020617; /* Even darker Midnight (Slate 950) */
-  --foreground: #E2E8F0; /* Slate 200 */
+  --background: #020617;
+  /* Even darker Midnight (Slate 950) */
+  --foreground: #E2E8F0;
+  /* Slate 200 */
 }
 
 body {

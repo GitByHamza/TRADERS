@@ -8,8 +8,11 @@ import Providers from "@/components/Providers";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Admin Dashboard",
+  title: "HAT",
   description: "Business Management System",
+  icons: {
+    icon: '/title.png',
+  },
 };
 
 export default function RootLayout({

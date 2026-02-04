@@ -78,7 +78,10 @@ function MobileNav() {
                         <line x1="3" y1="18" x2="21" y2="18" />
                     </svg>
                 </button>
-                <h1 className="text-xl font-bold tracking-tight text-blue-400">AdminPanel</h1>
+                <h1 className="text-xl font-bold tracking-tight text-blue-400 flex items-center gap-2">
+                    <img src="/title.png" alt="HAT Logo" className="w-8 h-8 object-contain" />
+                    HAT
+                </h1>
             </div>
 
             {/* Mobile Drawer */}

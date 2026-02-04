@@ -19,8 +19,11 @@ export default function Sidebar({ onLinkClick }: { onLinkClick?: () => void }) {
 
     return (
         <div className="flex flex-col h-full w-64 bg-slate-900 text-white shadow-xl">
-            <div className="p-6 flex justify-between items-center">
-                <h1 className="text-2xl font-bold tracking-tight text-blue-400">AdminPanel</h1>
+            <div className="p-6 flex justify-between items-center gap-2">
+                <div className="flex items-center gap-3">
+                    <img src="/title.png" alt="HAT Logo" className="w-10 h-10 object-contain" />
+                    <h1 className="text-2xl font-bold tracking-tight text-blue-400">HAT</h1>
+                </div>
                 <ThemeToggle />
             </div>
 
