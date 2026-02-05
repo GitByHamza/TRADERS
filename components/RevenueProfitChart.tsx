@@ -109,6 +109,8 @@ export default function RevenueProfitChart() {
                                 />
                                 <Tooltip
                                     contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
+                                    labelStyle={{ color: '#111827', fontWeight: 'bold' }}
+                                    itemStyle={{ color: '#111827' }}
                                     cursor={{ stroke: '#9ca3af', strokeDasharray: '3 3' }}
                                 />
                                 <Area

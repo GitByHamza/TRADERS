@@ -1,5 +1,6 @@
 'use server';
 
+import { revalidatePath } from 'next/cache';
 import dbConnect from '@/lib/db';
 import Client from '@/models/Client';
 import Product from '@/models/Product';
@@ -70,18 +71,24 @@ export async function getClients() {
 export async function createClient(data: { name: string; contactInfo?: string; address?: string; notes?: string }) {
     await dbConnect();
     await Client.create(data);
+    revalidatePath('/clients');
+    revalidatePath('/sales'); // Dropdown needs update
     return { success: true };
 }
 
 export async function updateClient(id: string, data: { name: string; contactInfo?: string; address?: string; notes?: string }) {
     await dbConnect();
     await Client.findByIdAndUpdate(id, data);
+    revalidatePath('/clients');
+    revalidatePath('/sales');
     return { success: true };
 }
 
 export async function deleteClient(id: string) {
     await dbConnect();
     await Client.findByIdAndDelete(id);
+    revalidatePath('/clients');
+    revalidatePath('/sales');
     return { success: true };
 }
 
@@ -99,18 +106,24 @@ export async function getProducts() {
 export async function createProduct(data: any) {
     await dbConnect();
     await Product.create(data);
+    revalidatePath('/inventory');
+    revalidatePath('/sales'); // Dropdown needs update
     return { success: true };
 }
 
 export async function updateProduct(id: string, data: any) {
     await dbConnect();
     await Product.findByIdAndUpdate(id, data);
+    revalidatePath('/inventory');
+    revalidatePath('/sales');
     return { success: true };
 }
 
 export async function deleteProduct(id: string) {
     await dbConnect();
     await Product.findByIdAndDelete(id);
+    revalidatePath('/inventory');
+    revalidatePath('/sales');
     return { success: true };
 }
 
@@ -185,6 +198,11 @@ export async function createSale(data: {
         trackingNo: data.trackingNo || '',
         date: new Date()
     });
+
+    revalidatePath('/sales');
+    revalidatePath('/inventory'); // Stock update needs refresh
+    revalidatePath('/'); // Dashboard stats update
+    revalidatePath('/api/analytics'); // Chart data
 
     return { success: true, saleId: sale._id.toString() };
 }
